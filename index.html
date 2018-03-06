@@ -88,80 +88,82 @@
 
 <div class="row large-6 colunms">
 	<div class="tab cuadros">
-	    <button class="tablinks letras" onclick="openCity(event, 'Conocenos')">Inicia Sesion</button>
+	    <button class="tablinks letras" onclick="openCity(event, 'Conocenos')">Inicia Sesión</button>
 	    <button class="tablinks letras" onclick="openCity(event, 'Conocenos1')">Registrate</button>
 	</div>
 </div>
-
+<form method="POST" autocomplete="off" action="php/acceso.php">
 <div id="Conocenos" class="row large-6 colunms tabcontent">
     <div align="center" class="medium-uncollapse">
         <div class="large-6 colunms">
         	<label>Correo:
-        		<input type="text" placeholder="Correo:" name="" id="">
+        		<input type="text" placeholder="Correo:" name="correo" id="">
 	        </label>
 	    </div>
 	    <div class="large-6 colunms">
 	        <label>Contraseña:
-	        	<input type="text" placeholder="Contraseña" name="" id="">
+	        	<input type="password" placeholder="Contraseña" name="contraseña" id="">
 	        </label>
         </div>
-        <a href="#" id="boton" class="button">Entrar</a>
+       <input  id="ok" class="button small Racing" type="submit" value="Entrar">
     </div>
 </div>
+</form>
+<form method="POST" autocomplete="off" action="php/registro.php">
 <div id="Conocenos1" class="row large-6 colunms tabcontent">
     <div align="center" class="medium-uncollapse">
 	 	<div class="medium-uncollapse large-collapse">
 		    <div class="small-6 columns">
 		        <label>Nombre:
-		        	<input type="text" placeholder="Nombre" name="" id="">
+		        	<input type="text" placeholder="Nombre" name="nombre" id="">
 		        </label>
 		    </div>
 		    <div class="small-6 columns">
 		        <label>Apellido:
-		        	<input type="text" placeholder="Apellido" name="" id="">
+		        	<input type="text" placeholder="Apellido" name="apellido" id="">
 		        </label>
 		    </div>
 		</div>
 		<div class="medium-uncollapse large-collapse">
 		    <div class="small-6 columns">
 		        <label>Correo:
-	        		<input type="text" placeholder="InformaticUP@hotmail.com" name="" id="">
+	        		<input type="text" placeholder="InformaticUP@hotmail.com" name="correo" id="">
 	       		</label>
 		    </div>
 		    <div class="small-6 columns">
 		        <label>Contraseña:
-	        		<input type="text" placeholder="Contraseña" name="" id="">
+	        		<input type="password" placeholder="Contraseña" name="contraseña" id="">
 	        	</label>
 		    </div>
 		</div>
 		<div class="medium-uncollapse large-collapse">
 		    <div class="small-6 columns">
 		        <label>Confirmar Contraseña:
-	        		<input type="text" placeholder="Confirmar Contraseña" name="" id="">
+	        		<input type="password" placeholder="Confirmar Contraseña" name="contraseña2" id="">
 	        	</label>
 		    </div>
 		    <div class="small-6 columns">
-		        <label>Edad:
-	        		<input type="date" placeholder="" name="" id="">
+		        <label>Fecha de Nacimiento:
+	        		<input type="date" placeholder="" name="edad" id="">
 	        	</label>
 		    </div>
 		</div>
 		<div class="medium-uncollapse large-collapse">
 		    <div class="small-6 columns">
 		        <label>Especialidad:
-	        		<input type="text" placeholder="Especialidad" name="" id="">
+	        		<input type="text" placeholder="Especialidad" name="especialidad" id="">
 	        	</label>
 		    </div>
 		    <div class="small-6 columns">
 		        <label>GitHub:
-	        		<input type="text" placeholder="Url/Perfil" name="" id="">
+	        		<input type="text" placeholder="Url/Perfil" name="git" id="">
 	        	</label>
 		    </div>
 		</div>
-	 	<div id="boton" class="button">Entrar</div>
+	 	<input  id="ok" class="button small Racing" type="submit" value="Enviar">
     </div>
 </div>
-
+</form>
 <br><br>
 
 <div class="row" id="slider">
