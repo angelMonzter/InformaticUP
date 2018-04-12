@@ -6,17 +6,16 @@ Conectarse();
 $nombre= $_POST['nombre'];
 $apellido= $_POST['apellido'];
 $correo=$_POST['correo'];
-$contrasena=$_POST['contrasena'];
-$contrasena2=$_POST['contrasena2'];
+$contrasena=$_POST['contraseña'];
+$contrasena2=$_POST['contraseña2'];
 $edad=$_POST['edad'];
 $especialidad=$_POST['especialidad'];
 $github=$_POST['git'];
 
-echo $nombre;
 
 
 //$encrip=password_hash($contrasena,PASSWORD_DEFAULT);
-if (empty($nombre && $apellido && $correo && $contrasena && $contrasena2 && $edad && $especialidad && $github)) {
+if (empty($nombre || $apellido || $correo || $contrasena || $contrasena2 || $edad || $especialidad || $github)) {
 	?>
 	<script type="text/javascript">
 		alert("Favor de llenar todos los campos...");
