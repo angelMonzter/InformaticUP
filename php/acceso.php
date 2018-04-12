@@ -9,18 +9,22 @@ if (!isset($_SESSION)) {
 }
 
 //Recibir los datos ingresados en el formulario
-$nombre= $_POST['usuario'];
-$password= $_POST['contrasena'];
+$nombre= $_POST['correo'];
+$password= $_POST['contraseña'];
+
+
 //include 'AES.php';
+	$consulta= "SELECT * FROM registro WHERE correo='$nombre'"; 
 
-//$contra=SED::encryption($password);
-$consulta= "SELECT * FROM registro WHERE correo='".$nombre."'"; 
 $resultado= mysql_query($consulta,$link) or die (mysql_error());
-$fila = mysql_fetch_array($resultado);
-$user=$fila[3];
-echo $user; 
+$fila=mysql_fetch_array($resultado);
 
-/*
+$contrabd=$fila[5];
+echo $fila[3];
+echo $fila[5];
+
+//encryption($password);
+
 if(empty($nombre && $password)){
 	?>
 	<script type="text/javascript">
@@ -28,7 +32,13 @@ if(empty($nombre && $password)){
 		window.location="../index.html";
 	</script>
 	<?php
-}else{
+}
+
+//echo $contrabd;
+//echo $password;
+
+else{
+
 if($contrabd == $password){
 	$_SESSION['nombre'] = $fila['nombre'];
 	header("Location: ../inicio.php"); 
@@ -43,11 +53,5 @@ else{
 	<?php	
 }
 }
-	?>
-<body>
-	$usuariog=$nombre;
-	<a href="php/pedido.php/?usuariog=<?php echo $usuariog?>"> </a>
-</body>
-	<?php
-	*/
+
 ?>
