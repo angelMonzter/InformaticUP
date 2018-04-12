@@ -1,17 +1,30 @@
-<?php
 
-function conectar(){
-	global $conex;
-	$usr="root";
-	$psw="root";
-	$serv="localhost";
-	$bd="floreriav4";
+ <?php
+error_reporting(E_ALL ^ E_DEPRECATED);
+	global $link;
+	function Conectarse()
+	{
+			
+			if(!($link=mysql_connect("localhost", "root", "")))
+			{	
+				echo "error conectando a la base de datos";
+				exit ();
+			}
+			
+			if(!mysql_select_db("informaticup",$link))
+			{
+				echo "error seleccionando en la base de datos";
+				exit ();
+			}
+			return $link;
+	}
 
-	$conex=mysql_connect($serv, $usr, $psw) or die(mysql_error());
+function desconectar()
+	{
+		mysql_close();
+	}
 
-	mysql_select_db($bd,$conex) or die(mysql_error());
-
-	return $conex;
-}
 
 ?>
+
+<?php
