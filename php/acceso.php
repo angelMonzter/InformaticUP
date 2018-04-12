@@ -1,7 +1,7 @@
 <?php 
 //Proceso de conexión con la base de datos
 include("conexion.php");
-$link=conectar();
+$link=Conectarse();
 
 //Inicio de variables de sesión
 if (!isset($_SESSION)) {
@@ -14,33 +14,31 @@ $password= $_POST['contrasena'];
 //include 'AES.php';
 
 //$contra=SED::encryption($password);
+$consulta= "SELECT * FROM registro WHERE correo='".$nombre."'"; 
+$resultado= mysql_query($consulta,$link) or die (mysql_error());
+$fila = mysql_fetch_array($resultado);
+$user=$fila[3];
+echo $user; 
 
-$consulta=mysql_query("SELECT usuario, contrasena FROM registro WHERE usuario = '".$nombre."'");
-$fila = mysql_fetch_row($consulta);
-$contrabd=$fila[1];
-$user=$fila[0];
-global $user; 
-//echo $contrabd;
-//echo $password;
-
+/*
 if(empty($nombre && $password)){
 	?>
 	<script type="text/javascript">
 		alert("Favor de llenar todos los campos...");
-		window.location="../sistem-sesion.html";
+		window.location="../index.html";
 	</script>
 	<?php
 }else{
 if($contrabd == $password){
 	$_SESSION['nombre'] = $fila['nombre'];
-	header("Location: ../sistem-pedido.html"); 
+	header("Location: ../inicio.php"); 
 	
 }
 else{
 ?>
 	<script type="text/javascript">
 		alert("Datos no validos, Favor de verificar los datos...");
-		window.location="../sistem-sesion.html";
+		window.location="../index.html";
 	</script>
 	<?php	
 }
@@ -51,5 +49,5 @@ else{
 	<a href="php/pedido.php/?usuariog=<?php echo $usuariog?>"> </a>
 </body>
 	<?php
-
+	*/
 ?>
