@@ -1,49 +1,47 @@
 <?php
 
 include("conexion.php");
-conectar();
+Conectarse();
 // variables
 $nombre= $_POST['nombre'];
 $apellido= $_POST['apellido'];
-$genero=$_POST["genero"]; 
-$edad=$_POST['edad'];
 $correo=$_POST['correo'];
-$telefono=$_POST['telefono'];
-$usuario=$_POST['usuario'];
-$contrasena= $_POST['contrasena'];
-$contrasena2= $_POST['contrasena2'];
-$direccion=$_POST['direccion'];
-$llave=$_POST['llave'];
+$contrasena=$_POST['contrasena'];
+$contrasena2=$_POST['contrasena2'];
+$edad=$_POST['edad'];
+$especialidad=$_POST['especialidad'];
+$github=$_POST['git'];
 
-$llave1='Antohan';
+echo $nombre;
+
 
 //$encrip=password_hash($contrasena,PASSWORD_DEFAULT);
-if (empty($nombre && $apellido && $edad && $correo && $telefono && $usuario && $contrasena && $direccion && $llave)) {
+if (empty($nombre && $apellido && $correo && $contrasena && $contrasena2 && $edad && $especialidad && $github)) {
 	?>
 	<script type="text/javascript">
 		alert("Favor de llenar todos los campos...");
-		window.location="../sistem-registro.html";
+		window.location="../index.html";
 	</script>
 	<?php
 }else{
 
 
-	if ($contrasena == $contrasena2 && $llave == $llave1) {
-//include 'AES.php';
- //$contra=SED:: encryption($contrasena);
-
-	//$consulta=mysql_query("insert into registro (`id_registro`,`nombre`,`apellido`,`fecha_na`,`correo`,`contrasena`) values(NULL,'$nombre','$apellidos','$fecha_na','$correo','$contra')",$conex) or die ("Error");
-
-	//$consulta=mysql_query("insert into registro (`id_registro`,`nombre`,`apellido`,`genero`,`edad`,`telefono`, `usuario`, `contrasena`, `direccion`, `llave`) values(NULL,'$nombre','$apellidos','$fecha_na','$correo','$contra')",$conex) or die ("Error");
-$consulta=mysql_query("insert into registro (`id_registro`, `nombre`, `apellido`, `genero`, `edad`, `correo`, `telefono`, `usuario`, `contrasena`, `direccion`, `llave`) values (NULL, '$nombre', '$apellido', '$genero', '$edad', '$correo', '$telefono','$usuario', '$contrasena', '$direccion', '$llave')",$conex) or die (mysql_error($consulta));
-
+	if ($contrasena == $contrasena2) {
+$sql="INSERT INTO registro VALUES(NULL,'$nombre', '$apellido', '$correo', '$edad', '$contrasena','1','$github')";
+$ejecutar=mysql_query($sql);
+if(!$ejecutar){
+	echo "error";
+}else{
+	echo "datos guadardos..";
+}
+	//$consulta=mysql_query("INSERT INTO registro (`nombre`, `apellido`, `correo`, `edad`, `contraseña`, `especialidad`, `github`) values ('$nombre', '$apellido', '$correo', '$edad', '$contrasena','1','$github')",$link) or die (mysql_error($consulta));
 
 	?>
 <body>
 		<script type="text/javascript">
 		
-		alert("Se ha registrado con exito...");
-		window.location="../sistem-sesion.html";
+		alert("Se ha registrado con exito, inicia sesión...");
+		window.location="../index.html";
 		</script>
 </body>
 
@@ -53,7 +51,7 @@ $consulta=mysql_query("insert into registro (`id_registro`, `nombre`, `apellido`
 	?>
 	<script type="text/javascript">
 		alert("Contraseña o llave incorrectas favor de corregir");
-		window.location="../sistem-registro.html";
+		window.location="../index.html";
 	</script>
 	<?php
 }
